@@ -1,41 +1,47 @@
 import React from 'react';
-import { PageContainer } from '../components/layout/PageContainer';
+import { Navbar } from '../components/layout/Navbar';
 import { Hero } from '../sections/Hero';
-import { TechnologyStrip } from '../sections/TechnologyStrip';
-import { RecruiterSnapshot } from '../sections/RecruiterSnapshot';
-import { FeaturedProjects } from '../sections/FeaturedProjects';
-import { HowIBuild } from '../sections/HowIBuild';
-import { WhatIBring } from '../sections/WhatIBring';
-import { SecondaryProjects } from '../sections/SecondaryProjects';
-import { ProductJourney } from '../sections/ProductJourney';
-import { SkillsCapabilities } from '../sections/SkillsCapabilities';
-import { GitHubCredibility } from '../sections/GitHubCredibility';
-import { ResumeCTA } from '../sections/ResumeCTA';
-import { AboutPreview } from '../sections/AboutPreview';
-import { Achievements } from '../sections/Achievements';
-import { ContactSection } from '../sections/ContactSection';
-import { PERSONAL_CONFIG } from '../data/config';
+import { CaseStudiesClean } from '../sections/CaseStudiesClean';
+import { AboutClean } from '../sections/AboutClean';
+import { ContactClean } from '../sections/ContactClean';
+import { PasswordModal } from '../components/profile/PasswordModal';
+import { EditProfileModal } from '../components/profile/EditProfileModal';
+import { useProfile } from '../context/ProfileContext';
 
 export const HomePage: React.FC = () => {
+  const { profile } = useProfile();
+
+  React.useEffect(() => {
+    document.title = `${profile.name} — ${profile.title}`;
+  }, [profile.name, profile.title]);
+
   return (
-    <PageContainer
-      title={`${PERSONAL_CONFIG.name} — ${PERSONAL_CONFIG.role}`}
-      description={PERSONAL_CONFIG.supportingCopy}
-    >
-      <Hero />
-      <TechnologyStrip />
-      <RecruiterSnapshot />
-      <FeaturedProjects />
-      <HowIBuild />
-      <WhatIBring />
-      <SecondaryProjects />
-      <ProductJourney />
-      <SkillsCapabilities />
-      <GitHubCredibility />
-      <ResumeCTA />
-      <AboutPreview />
-      <Achievements />
-      <ContactSection />
-    </PageContainer>
+    <div className="min-h-screen bg-[#F9FAFB] text-[#111827] flex flex-col selection:bg-[#2563EB] selection:text-white">
+      {/* Clean Navigation: 'Home', 'About', 'Contact/LinkedIn' */}
+      <Navbar />
+
+      {/* Main Content Layout */}
+      <main className="flex-1">
+        {/* Hero Section: Name, Title (AI Product Manager), 2-sentence value proposition */}
+        <Hero />
+
+        {/* Case Study Cards: Grid featuring 2-3 case study cards */}
+        <CaseStudiesClean />
+
+        {/* About Section */}
+        <AboutClean />
+
+        {/* Contact / LinkedIn Section */}
+        <ContactClean />
+      </main>
+
+      {/* Password Modal (Requires Ram123) */}
+      <PasswordModal />
+
+      {/* Profile Edit Modal / Drawer */}
+      <EditProfileModal />
+    </div>
   );
 };
+
+export default HomePage;

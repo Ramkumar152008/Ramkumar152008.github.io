@@ -8,36 +8,52 @@ export default {
   theme: {
     extend: {
       colors: {
+        offwhite: '#F9FAFB',
+        charcoal: {
+          DEFAULT: '#111827',
+          light: '#1F2937',
+          muted: '#4B5563',
+          faint: '#9CA3AF',
+          border: '#E5E7EB',
+        },
+        techblue: {
+          DEFAULT: '#2563EB',
+          hover: '#1D4ED8',
+          light: '#3B82F6',
+          subtle: '#EFF6FF',
+          border: '#BFDBFE',
+        },
         bg: {
-          DEFAULT: '#FFFFFF',
-          secondary: '#F8FAFC',
-          blueSection: '#F0F9FF',
+          DEFAULT: '#F9FAFB',
+          offwhite: '#F9FAFB',
+          secondary: '#F3F4F6',
+          blueSection: '#EFF6FF',
           card: '#FFFFFF',
-          hover: '#F0F9FF',
-          surface: '#F8FAFC',
-          subtle: '#F1F5F9',
+          hover: '#F8FAFC',
+          surface: '#F9FAFB',
+          subtle: '#F3F4F6',
         },
         border: {
-          DEFAULT: '#E2E8F0',
-          subtle: '#F1F5F9',
-          accent: '#0EA5E9',
-          skyLight: '#BAE6FD',
-          active: '#0284C7',
+          DEFAULT: '#E5E7EB',
+          subtle: '#F3F4F6',
+          accent: '#2563EB',
+          skyLight: '#BFDBFE',
+          active: '#1D4ED8',
         },
         accent: {
-          DEFAULT: '#0EA5E9', // Primary Sky Blue
-          hover: '#0284C7',
-          light: '#38BDF8',
-          subtle: '#F0F9FF',
-          border: '#BAE6FD',
-          dark: '#0369A1',
+          DEFAULT: '#2563EB', // Tech Blue
+          hover: '#1D4ED8',
+          light: '#3B82F6',
+          subtle: '#EFF6FF',
+          border: '#BFDBFE',
+          dark: '#1E40AF',
         },
         text: {
-          primary: '#0F172A',   // Dark Navy / Slate-900
-          secondary: '#475569', // Slate-600
-          muted: '#64748B',     // Slate-500
-          light: '#94A3B8',     // Slate-400
-          faint: '#CBD5E1',     // Slate-300
+          primary: '#111827',   // Charcoal gray (30%)
+          secondary: '#4B5563', // Gray-600
+          muted: '#6B7280',     // Gray-500
+          light: '#9CA3AF',     // Gray-400
+          faint: '#D1D5DB',     // Gray-300
         },
         success: {
           DEFAULT: '#16A34A',
@@ -46,7 +62,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
         signature: ['Caveat', 'cursive', 'sans-serif'],
       },

@@ -4,24 +4,61 @@
 
 @layer base {
   :root {
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F8FAFC;
-    --bg-blue-section: #F0F9FF;
-    --border-color: #E2E8F0;
-    --accent-sky: #0EA5E9;
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
+    --bg-primary: #F9FAFB;
+    --bg-card: #FFFFFF;
+    --border-color: #E5E7EB;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --accent-blue: #2563EB;
+    --accent-blue-hover: #1D4ED8;
   }
 
   html {
     color-scheme: light;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: 'Inter', 'Roboto', system-ui, -apple-system, sans-serif;
   }
 
   body {
-    background-color: #FFFFFF;
-    color: #0F172A;
+    background-color: #F9FAFB;
+    color: #111827;
+    font-family: 'Inter', 'Roboto', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
     overflow-x: hidden;
+  }
+
+  /* Strict Typography System Utilities */
+  .title-h1 {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  .header-h2 {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: 26px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .subheader-h3 {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .body-text {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #4B5563;
   }
 
   /* Clean light scrollbar */
@@ -31,16 +68,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #F8FAFC;
+    background: #F9FAFB;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #CBD5E1;
+    background: #D1D5DB;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #94A3B8;
+    background: #9CA3AF;
   }
 }
 
