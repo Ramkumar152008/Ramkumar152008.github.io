@@ -35,7 +35,7 @@ export const HomePage: React.FC = () => {
         <ContactClean />
       </main>
 
-      {/* Password Modal (Requires Ram123) */}
+      {/* Administrator Authentication Modal */}
       <PasswordModal />
 
       {/* Profile Edit Modal / Drawer */}

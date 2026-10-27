@@ -54,7 +54,7 @@ export const EditProfileModal: React.FC = () => {
             <div>
               <h2 className="text-lg font-bold text-charcoal">Edit Portfolio Profile</h2>
               <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 inline-flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> Authenticated (Ram123)
+                <Sparkles className="w-3 h-3" /> Authenticated Administrator
               </span>
             </div>
           </div>

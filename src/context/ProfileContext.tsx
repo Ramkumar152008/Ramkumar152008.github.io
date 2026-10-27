@@ -70,7 +70,16 @@ const DEFAULT_PROFILE_DATA: ProfileData = {
 
 const STORAGE_KEY = 'ai_pm_portfolio_profile_data_v1';
 const AUTH_KEY = 'ai_pm_portfolio_is_unlocked_v1';
-const CORRECT_PASSWORD = 'Ram123';
+
+// One-way SHA-256 hash of the administrator passkey (plaintext password is never stored or exposed)
+const PASS_HASH = 'cd96142b14d184a90d1131d71b70e236e6f3a81d5c5dea28a4be8c22e1b946c5';
+
+const hashPass = async (str: string): Promise<string> => {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+};
 
 interface ProfileContextType {
   profile: ProfileData;
@@ -81,7 +90,7 @@ interface ProfileContextType {
   closePasswordModal: () => void;
   openEditModal: () => void;
   closeEditModal: () => void;
-  unlockWithPassword: (password: string) => { success: boolean; message: string };
+  unlockWithPassword: (password: string) => Promise<{ success: boolean; message: string }>;
   lockEditor: () => void;
   saveProfile: (updatedData: ProfileData) => void;
   resetToDefaults: () => void;
@@ -122,13 +131,18 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
   const closeEditModal = () => setIsEditModalOpen(false);
 
-  const unlockWithPassword = (inputPassword: string) => {
-    if (inputPassword === CORRECT_PASSWORD) {
-      setIsUnlocked(true);
-      sessionStorage.setItem(AUTH_KEY, 'true');
-      setIsPasswordModalOpen(false);
-      setIsEditModalOpen(true);
-      return { success: true, message: 'Authentication successful! Welcome, Ramkumar.' };
+  const unlockWithPassword = async (inputPassword: string) => {
+    try {
+      const hashed = await hashPass(inputPassword);
+      if (hashed === PASS_HASH) {
+        setIsUnlocked(true);
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        setIsPasswordModalOpen(false);
+        setIsEditModalOpen(true);
+        return { success: true, message: 'Authentication successful.' };
+      }
+    } catch (e) {
+      console.error(e);
     }
     return { success: false, message: 'Incorrect password. Access denied.' };
   };
